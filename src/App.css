@@ -1,37 +1,18 @@
-.app {
-  display: flex;
-  height: 100vh; /* Full viewport height */
+.App-websocket {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; 
+  height: 100%; 
+  text-align: center;
 }
 
-.main-component {
-  flex: 1; /* Takes half the page width */
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-right: 2px solid #ccc;
-}
-
-.config {
-  flex: 1; /* Takes the other half of the page */
-  display: flex;
-  flex-direction: column;
-}
-
-.top-right-component {
-  flex: 1;
-  background-color: #d3f9d8;
-  padding: 10px;
-  border-bottom: 2px solid #ccc;
-}
-
-.middle-right-component {
-  flex: 1;
-  background-color: #ffc4c4;
-  padding: 10px;
-  border-bottom: 2px solid #ccc;
-}
-
-.bottom-right-component {
-  flex: 1;
-  background-color: #c4c9ff;
-  padding: 10px;
+.App-system {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%; 
+  height: 50px; 
+  margin: 10px auto;
+  text-align: center;
 }

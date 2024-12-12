@@ -3,7 +3,8 @@ import SockJS from 'sockjs-client';
 import { Client } from '@stomp/stompjs';
 
 const WebSocketMessages = () => {
-    const [messages, setMessages] = useState(['Waiting for messages...']);
+    const [messages, setMessages] = useState(['Waiting for logs...']);
+    const [tickets, setTickets] = useState(0);
     
     useEffect(() => {
         // WebSocket connection setup
@@ -16,6 +17,11 @@ const WebSocketMessages = () => {
                         ...prevMessages,
                         message.body
                     ]);
+                });
+                stompClient.subscribe('/topic/tickets', (message) => {
+                    const ticketCount = parseInt(message.body, 10);
+                    setTickets(ticketCount);
+                    console.log('Tickets:', message.body);
                 });
             },
             onDisconnect: () => {
@@ -38,13 +44,16 @@ const WebSocketMessages = () => {
 
     return (
         <div>
-            <h2>Log Messages</h2>
-            <div id="messages" style={{ border: '1px solid #ddd', padding: '10px', maxWidth: '600px', marginTop: '10px', height: '300px', overflowY: 'auto' }}>
+            <h2>RealTime Ticket System</h2>
+            <div id="messages" style={{ maxWidth: '90%', margin: '20px auto', padding: '20px', border: '1px solid #ddd', borderRadius: '5px', height: '580px', overflowY: 'auto' }}>
                 {messages.map((message, index) => (
-                    <p key={index} style={{ margin: '5px 0', padding: '5px', background: '#f9f9f9', borderRadius: '5px' }}>
+                    <p key={index} style={{ margin: '5px 0', padding: '5px', background: '#f9f9f9', borderRadius: '5px', color: '#282c34'  }}>
                         {message}
                     </p>
                 ))}
+            </div>
+            <div>
+                <p>Available Tickets - {tickets}</p>
             </div>
         </div>
     );

@@ -1,13 +1,19 @@
 import WebSocketMessages from './Component/webSocket';
-import SystemConfig from './Component/systemConfig';
+import System from './Component/systemConfig';
+import CustomerManagement from './Component/customerComp';
+import VendorManagement from './Component/vendorComp';
 import './App.css';
 
 function App() {
   return (
-    <div className="app">
-        <WebSocketMessages /> {/* Use the WebSocketMessages component */}
-      <div className="config">
-        <SystemConfig /> {/* Use the SystemConfig component */}
+    <div>
+      <div className='App-websocket'>
+        <WebSocketMessages />
+        </div>
+      <div className='App-system'>
+        <CustomerManagement />
+        <VendorManagement />
+        <System />
       </div>
     </div>
   );
